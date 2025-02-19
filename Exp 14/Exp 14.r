@@ -1,16 +1,12 @@
-# Create a simulated dataset
-water <- data.frame(
-  mortality = c(1600, 1450, 1250, 1600, 1380, 1260, 1590, 1490, 1440, 1400),
-  hardness = c(50, 70, 30, 60, 55, 45, 80, 65, 60, 75)
-)
-print(head(water))
+water <- read.csv("Water.csv")
+head(water)
 plot(water$hardness, water$mortality, 
      main="Scatter Plot: Mortality vs Hardness",
-     xlab="Hardness", ylab="Mortality",
+     xlab="Hardness", ylab="Mortality", 
      col="blue", pch=16)
-model <- lm(mortality ~ hardness, data=water)
-abline(model, col="red", lwd=2)
-# Predict mortality for hardness = 88
-new_data <- data.frame(hardness=88)
-predicted_mortality <- predict(model, new_data)
-cat("Predicted Mortality for Hardness = 88:", predicted_mortality, "\n")
+lm_water <- lm(mortality ~ hardness, data = water)
+summary(lm_water)
+hardness_new <- data.frame(hardness = 88)
+mortality_pred <- predict(lm_water, newdata = hardness_new)
+cat("Predicted Mortality for Hardness = 88:", mortality_pred, "\n")
+abline(lm_water, col="red", lwd=2)
