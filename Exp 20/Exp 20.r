@@ -1,0 +1,5 @@
+diabetes <- read.csv("diabetes.csv")
+lm_age_diabetes <- lm(diabetes$DiabetesPedigreeFunction ~ diabetes$Age)
+summary(lm_age_diabetes)
+lm_age_bmi_pedigree <- lm(DiabetesPedigreeFunction ~ Age + BMI + Glucose, data = diabetes)
+summary(lm_age_bmi_pedigree)
