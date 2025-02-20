@@ -1,0 +1,20 @@
+@relation transactions
+
+@attribute M {0,1}
+@attribute O {0,1}
+@attribute N {0,1}
+@attribute K {0,1}
+@attribute E {0,1}
+@attribute Y {0,1}
+@attribute D {0,1}
+@attribute A {0,1}
+@attribute U {0,1}
+@attribute C {0,1}
+@attribute I {0,1}
+
+@data
+1,1,1,1,1,1,0,0,0,0,0
+0,1,1,1,1,1,1,0,0,0,0
+1,0,0,1,1,0,0,1,0,0,0
+1,0,0,1,0,1,0,0,1,1,0
+0,1,0,1,1,0,0,0,0,1,1
