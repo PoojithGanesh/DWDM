@@ -1,0 +1,15 @@
+@relation transactions
+
+@attribute Hot_Dogs {0,1}
+@attribute Buns {0,1}
+@attribute Ketchup {0,1}
+@attribute Coke {0,1}
+@attribute Chips {0,1}
+
+@data
+1,1,1,0,0
+1,1,0,0,0
+1,0,0,1,1
+0,0,0,1,1
+0,0,1,0,1
+1,0,0,1,1
