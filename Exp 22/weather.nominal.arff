@@ -1,0 +1,34 @@
+import weka.core.Instances;
+import weka.core.converters.ConverterUtils.DataSource;
+import weka.classifiers.trees.J48;
+import weka.classifiers.Evaluation;
+import java.util.Random;
+
+public class DecisionTreeWeka {
+    public static void main(String[] args) {
+        try {
+            // Load dataset
+            DataSource source = new DataSource("weather.nominal.arff"); // Change to your dataset
+            Instances dataset = source.getDataSet();
+            
+            // Set the class index (target attribute)
+            dataset.setClassIndex(dataset.numAttributes() - 1); // Last column as class
+
+            // Train J48 Decision Tree model
+            J48 tree = new J48();
+            tree.buildClassifier(dataset);
+            
+            // Evaluate model using 10-fold cross-validation
+            Evaluation eval = new Evaluation(dataset);
+            eval.crossValidateModel(tree, dataset, 10, new Random(1));
+
+            // Print results
+            System.out.println("Decision Tree (J48) Model:");
+            System.out.println(tree.toString()); // Print tree structure
+            System.out.println("Accuracy: " + eval.pctCorrect() + "%"); // Print accuracy
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
